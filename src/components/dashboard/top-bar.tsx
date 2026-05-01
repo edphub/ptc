@@ -5,7 +5,7 @@ import { Search, Plus } from 'lucide-react';
 export function TopBar() {
   return (
     <div className="sticky top-0 z-50 border-b border-slate-800 bg-slate-950">
-      <div className="flex items-center justify-between px-6 py-4">
+      <div className="flex items-center justify-between px-6 py-4 gap-6">
         {/* Search Bar */}
         <div className="flex-1 max-w-md">
           <div className="relative">
@@ -19,12 +19,10 @@ export function TopBar() {
         </div>
 
         {/* Right side actions */}
-        <div className="flex items-center gap-4 ml-6">
-          <button className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors">
-            <Plus className="h-4 w-4" />
-            New Item
-          </button>
-        </div>
+        <button className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors">
+          <Plus className="h-4 w-4" />
+          New Item
+        </button>
       </div>
     </div>
   );
