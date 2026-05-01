@@ -1,5 +1,14 @@
-<!-- BEGIN:nextjs-agent-rules -->
-# This is NOT the Next.js you know
+# Agent Instructions for PTC
 
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
-<!-- END:nextjs-agent-rules -->
+Parent–Teacher Communication & School Management SaaS Platform
+
+A cross-platform mobile and web-enabled SaaS ecosystem designed to enable secure, real-time communication and academic tracking between parents, teachers, and school administrations. The platform is optimized for low-resource education environments, with offline capability, lightweight UI, and scalable cloud architecture.
+
+## Context files
+
+Read the following to get full context of the project.
+
+- @context/project-overview.md
+- @context/coding-standards.md
+- @context/ai-interaction.md
+- @context/current-feature.md
