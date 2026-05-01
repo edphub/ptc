@@ -129,7 +129,17 @@ export const performanceTrend = [
 ];
 
 // Sample homework items
-export const homeworkItems = [
+export interface HomeworkItem {
+  id: string;
+  title: string;
+  class: string;
+  dueDate: string;
+  status: HomeworkStatus;
+  studentsSubmitted: number;
+  totalStudents: number;
+}
+
+export const homeworkItems: HomeworkItem[] = [
   {
     id: "hw-001",
     title: "Mathematics Assignment - Chapter 5",

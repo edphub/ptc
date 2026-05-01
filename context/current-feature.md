@@ -2,32 +2,30 @@ EduLink – Feature Development Tracker
 
 ## Current Feature
 
-Dashboard UI Phase 2 – Sidebar Navigation & Collections
+Dashboard UI Phase 3 – Drawer Interaction & Assignment Detail
 
-Implement a collapsible sidebar with navigation items, favorite collections, most recent collections, and user avatar area. This phase adds interactive navigation and collection browsing capabilities to the dashboard foundation established in phase 1.
+Implement a global drawer system for contextual detail views and the first Assignment Detail drawer experience. This phase keeps the dashboard visible while showing assignment details in a right-side drawer.
 
 ## Status
 
-completed
+in-progress
 
 ## Goals
 
 **Functional Requirements:**
-- Implement collapsible sidebar with drawer toggle
-- Add items/types with links to `/items/TYPE` (e.g., `/items/snippets`)
-- Display favorite collections
-- Display most recent collections
-- Add user avatar area at the bottom of sidebar
-- Show drawer icon to open/close sidebar
-- Ensure drawer always visible on mobile view
-- Responsive sidebar behavior for desktop and mobile
+- Build a global right-side drawer component
+- Add overlay and slide-in drawer animation
+- Close drawer via close icon, outside click, and ESC key
+- Add Assignment Detail drawer content for homework items
+- Keep dashboard visible in the background while drawer is open
+- Support desktop drawer width and mobile full-width drawer
 
 **User-Facing Outcomes:**
-- Intuitive navigation between different item types
-- Quick access to favorite and recent collections
-- User profile visibility with avatar
-- Seamless mobile experience with persistent drawer
-- Organized content discovery through sidebar
+- Fast context switching without leaving the dashboard
+- Clear assignment detail view in a sliding drawer
+- Smooth drawer open/close interactions
+- Improved task flow for teachers and admins
+- Consistent experience on desktop and mobile
 
 ## Notes
 
@@ -46,10 +44,10 @@ completed
 
 ## References
 
-- @context/screenshots/dashboard-ui-main.png (phase 2 visual design)
+- @context/features/dashboard-phase-3-spec.md (current phase)
+- @context/screenshots/dashboard-ui-main.png
 - @src/lib/mock-data.ts (data source)
-- @context/features/dashboard-phase-1-spec.md (previous phase)
-- @context/features/dashboard-phase-3-spec.md (next phase)
+- @context/features/dashboard-phase-2-spec.md (previous phase)
 
 ## History
 
