@@ -42,6 +42,7 @@ completed
 
 ## History
 
+- 2026-05-01: App branding added - Parent Teacher Communication name and icon in sidebar
 - 2026-05-01: Dashboard Phase 1 implementation completed - dark mode, top bar, layout structure
 - 2026-05-01: Dashboard Phase 1 specification finalized and development started
 - 2026-05-01: Mock data structure created for dashboard display
