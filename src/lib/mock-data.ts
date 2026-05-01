@@ -128,6 +128,51 @@ export const performanceTrend = [
   { month: "May", score: 81 },
 ];
 
+// Upcoming events and announcements
+export interface EventItem {
+  id: string;
+  title: string;
+  date: string;
+  type: "Event" | "Meeting" | "Academic" | "Holiday";
+  tag: string;
+  description: string;
+}
+
+export const events: EventItem[] = [
+  {
+    id: "event-001",
+    title: "Quarterly Parent Meeting",
+    date: "2026-05-08",
+    type: "Meeting",
+    tag: "Meeting",
+    description: "Discuss semester progress and upcoming exams.",
+  },
+  {
+    id: "event-002",
+    title: "Science Fair Preparation",
+    date: "2026-05-12",
+    type: "Academic",
+    tag: "Academic",
+    description: "Students prepare project boards for the science fair.",
+  },
+  {
+    id: "event-003",
+    title: "Teacher In-Service Day",
+    date: "2026-05-15",
+    type: "Event",
+    tag: "Event",
+    description: "Professional development sessions for faculty.",
+  },
+  {
+    id: "event-004",
+    title: "School Holiday",
+    date: "2026-05-18",
+    type: "Holiday",
+    tag: "Holiday",
+    description: "No classes due to summer planning break.",
+  },
+];
+
 // Sample homework items
 export interface HomeworkItem {
   id: string;
@@ -224,11 +269,46 @@ export const messages = [
 
 // Sample students
 export const students = [
-  { id: "student-001", name: "Ahmed Hassan", classId: "class-001" },
-  { id: "student-002", name: "Fatima Khan", classId: "class-001" },
-  { id: "student-003", name: "Omar Ali", classId: "class-002" },
-  { id: "student-004", name: "Zainab Ibrahim", classId: "class-002" },
-  { id: "student-005", name: "Hassan Malik", classId: "class-003" },
+  {
+    id: "student-001",
+    name: "Ahmed Hassan",
+    classId: "class-001",
+    attendancePercent: 98,
+    grade: "A",
+    status: "Active",
+  },
+  {
+    id: "student-002",
+    name: "Fatima Khan",
+    classId: "class-001",
+    attendancePercent: 94,
+    grade: "A-",
+    status: "Active",
+  },
+  {
+    id: "student-003",
+    name: "Omar Ali",
+    classId: "class-002",
+    attendancePercent: 91,
+    grade: "B+",
+    status: "Active",
+  },
+  {
+    id: "student-004",
+    name: "Zainab Ibrahim",
+    classId: "class-002",
+    attendancePercent: 89,
+    grade: "B",
+    status: "Active",
+  },
+  {
+    id: "student-005",
+    name: "Hassan Malik",
+    classId: "class-003",
+    attendancePercent: 96,
+    grade: "A",
+    status: "Active",
+  },
 ];
 
 // Sample teachers

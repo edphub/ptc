@@ -1,97 +1,159 @@
-# Dashboard UI Phase 3 Spec (Final – With Drawer Interaction)
+Dashboard UI Phase 3 Spec (Final – EduLink)
 
 ## Overview
 
-This phase completes the dashboard by implementing:
+This is Phase 3 of 3 for the dashboard UI.
 
-Main dashboard content (already defined)
-Interactive right-side drawer system
-Context-based detail views (starting with Assignment Detail)
+In this phase, we implement:
 
-This ensures:
+✅ Main dashboard content area
+✅ Interactive right-side drawer system
 
-Users never leave the dashboard → faster workflows → better UX
+Based on:
 
-## 🧠 Core Interaction Pattern
+Provided dashboard UI screenshots
+EduLink product architecture (attendance, academics, communication)
+Mock data (@src/lib/mock-data.ts)
+
+⚠️ UI only — no backend integration yet
+
+## Requirements for Phase 3
+
+## 1. 📊 Top Statistics Cards (4 Cards)
+
+(unchanged – already correct)
+
+Total Students
+Attendance Today
+Pending Homework
+Unread Messages
+
+## 2. 📈 Analytics Section
+
+Weekly Attendance
+Performance Trend
+
+(placeholder charts)
+
+## 3. 🏫 Classes Section
+
+Grid of class cards
+Teacher + student count
+Hover interaction
+
+## 4. 📚 Homework & Assignments Section (UPDATED)
+
+Display:
+
+List of assignments with:
+
+Subject name
+Class + due date
+Status:
+Open (blue)
+Done (green)
+Overdue (red)
+Submission ratio (e.g., 28/34)
+Progress bar
+🔥 NEW BEHAVIOR (IMPORTANT)
+
+👉 Clicking any homework item:
+
+MUST open the right-side drawer with Assignment Details
+
+## 5. 💬 Recent Messages Panel
+
+Avatar
+Name
+Message preview
+Timestamp
+Future Behavior (not in this phase):
+Click → open Message Drawer
+
+## 6. 🎓 Students Overview Table
+
+Name
+Class
+Attendance %
+Grade
+Status
+Future Behavior:
+Click → Student Detail Drawer
+
+## 7. 📢 Events & Announcements
+
+Event list
+Tags (Event / Meeting / Academic / Holiday)
+
+## 🧠 NEW SECTION — Drawer System (CRITICAL)
+
+## 8. 📂 Global Right Drawer
+
+Purpose:
+
+Provide contextual detail view without page navigation
 
 Behavior:
-Clicking any actionable item opens a right-side drawer
-Drawer shows contextual details
-Dashboard remains visible in the background
+Opens from right side
+Overlays dashboard
+Keeps background visible
+Closes via:
+❌ icon
+outside click
+ESC key
+UI Structure:
+Drawer
+│
+├── Header (title + close)
+├── Content (dynamic)
+├── Footer (actions)
 
-## 📂 Drawer System (New Requirement)
+## 9. 📚 Assignment Detail Drawer (Phase 3 Scope)
 
-1. Drawer Component (Global)
-   Requirements:
-   Slide-in panel from right
-   Overlay background (optional blur/dim)
-   Close actions:
-   ❌ Close icon (top right)
-   Click outside
-   ESC key
-   UI Structure:
-   Drawer
-   │
-   ├── Header
-   │ ├── Title
-   │ └── Close Button
-   │
-   ├── Content
-   │ ├── Dynamic (based on item type)
-   │
-   ├── Footer (optional)
-   │ ├── Action buttons
-2. 🎯 Trigger Points (Important)
-   Clicking these opens drawer:
-   Section Action
-   Homework list Open Assignment Detail
-   Messages Open Message Thread (future)
-   Students Open Student Profile (future)
-   Classes Open Class Overview (future)
+Trigger:
 
-## 📚 Assignment Detail Drawer (Phase 3 Scope)
+Click on any item in Homework & Assignments
 
-This is the first implemented drawer view.
-
-📌 Layout (Based on Image)
+Layout:
 Header:
 Subject icon
-Title: Subject name (e.g., Science)
-Subtitle: Class (e.g., Class 7-B)
-📊 Info Cards:
+Subject name (e.g., Science)
+Class (e.g., Class 7-B)
+Info Cards:
+Due Date
+Submissions (e.g., 31/31)
+Progress Section:
+Label: “Submission Progress”
+Progress bar
+Percentage (e.g., 100%)
+Actions:
+Primary: Send Reminder
+Secondary: View Details
+UI Behavior:
+Smooth slide-in animation (~300ms)
+Width:
+Desktop: 400–480px
+Mobile: full width
 
-1. Due Date
-   Example: May 2, 2026
-2. Submissions
-   Example: 31 / 31
-   📈 Submission Progress
-   Label: “Submission Progress”
-   Progress bar (100% example)
-   Percentage label
-   🎯 Actions:
-   Primary Button:
-   “Send Reminder”
-   Secondary Button:
-   “View Details”
-   UI Rules:
-   Clean vertical spacing
-   Highlight completion visually (green progress)
-   Buttons fixed at bottom (optional enhancement)
-
-## 🧱 Component Structure
+## 🧱 Component Structure (Updated)
 
 components/
+dashboard/
+StatsCard.tsx
+AttendanceChart.tsx
+PerformanceChart.tsx
+ClassCard.tsx
+HomeworkList.tsx
+MessagesList.tsx
+StudentsTable.tsx
+EventsList.tsx
+
 drawer/
 AppDrawer.tsx
-DrawerHeader.tsx
-DrawerContent.tsx
-
-dashboard/
 AssignmentDrawer.tsx
 
 ## 🧠 State Management
 
-Use simple state (for now):
 const [isDrawerOpen, setIsDrawerOpen] = useState(false)
 const [selectedItem, setSelectedItem] = useState(null)
 Open Drawer:
@@ -103,33 +165,31 @@ Close Drawer:
 setIsDrawerOpen(false)
 setSelectedItem(null)
 
-## 🔄 Data Flow (Temporary)
+## 📐 Final Layout Structure
 
-Use mock data:
-@src/lib/mock-data.ts
-Pass selected assignment into drawer
+Dashboard Layout
+│
+├── Sidebar (Phase 2)
+├── Top Bar
+│
+├── Main Content
+│ ├── Stats Cards
+│ ├── Charts
+│ ├── Classes
+│ ├── Homework + Messages
+│ ├── Students + Events
+│
+├── Right Drawer (Overlay)
 
-## 🎨 UX Behavior Rules
+## 📱 Responsiveness
 
-Drawer width:
-Desktop: ~400–480px
-Mobile: full width
-Animation:
-Smooth slide-in (300ms)
-Background:
-Slight dim or blur
-
-## 🔐 Role Awareness (Important for Future)
-
-Even if not implemented now, design should support:
-
-Teacher view:
-Send reminders
-View submissions
-Parent view:
-View assignment only
-Admin view:
-Analytics (future)
+Desktop:
+Multi-column layout + right drawer
+Tablet:
+Reduced columns
+Mobile:
+Stacked layout
+Drawer becomes full screen
 
 ## References
 
