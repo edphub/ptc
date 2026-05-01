@@ -1,11 +1,24 @@
 'use client';
 
-import { Search, Plus } from 'lucide-react';
+import { Search, Plus, Menu } from 'lucide-react';
 
-export function TopBar() {
+interface TopBarProps {
+  onMenuClick?: () => void;
+}
+
+export function TopBar({ onMenuClick }: TopBarProps) {
   return (
     <div className="sticky top-0 z-50 border-b border-slate-800 bg-slate-950">
       <div className="flex items-center justify-between px-6 py-4 gap-6">
+        {/* Mobile Menu Button */}
+        <button
+          onClick={onMenuClick}
+          className="md:hidden p-2 hover:bg-slate-900 rounded-lg transition-colors"
+          aria-label="Open menu"
+        >
+          <Menu className="h-5 w-5 text-slate-400" />
+        </button>
+
         {/* Search Bar */}
         <div className="flex-1 max-w-md">
           <div className="relative">
@@ -21,7 +34,7 @@ export function TopBar() {
         {/* Right side actions */}
         <button className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors">
           <Plus className="h-4 w-4" />
-          New Item
+          <span className="hidden sm:inline">New Item</span>
         </button>
       </div>
     </div>

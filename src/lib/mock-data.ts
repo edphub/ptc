@@ -242,3 +242,49 @@ export const teachers = [
     classes: ["class-003"],
   },
 ];
+
+
+
+// Favorite collections
+export const favoriteCollections = [
+  {
+    id: "collection-001",
+    name: "Class 6-A Materials",
+    itemCount: 24,
+    lastModified: "2026-04-28",
+  },
+  {
+    id: "collection-002",
+    name: "Exam Preparation",
+    itemCount: 18,
+    lastModified: "2026-04-25",
+  },
+  {
+    id: "collection-003",
+    name: "Teaching Resources",
+    itemCount: 42,
+    lastModified: "2026-04-20",
+  },
+];
+
+// Recent collections
+export const recentCollections = [
+  {
+    id: "collection-004",
+    name: "Weekly Updates",
+    itemCount: 12,
+    lastModified: "2026-05-01",
+  },
+  {
+    id: "collection-005",
+    name: "Student Assignments",
+    itemCount: 34,
+    lastModified: "2026-04-30",
+  },
+  {
+    id: "collection-006",
+    name: "Performance Tracking",
+    itemCount: 8,
+    lastModified: "2026-04-29",
+  },
+];
