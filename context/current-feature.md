@@ -20,4 +20,5 @@ EduLink – Feature Development Tracker
 
 <!-- Maintain a chronological log of changes for this feature. Format example: - YYYY-MM-DD: Initial draft created - YYYY-MM-DD: API endpoints defined - YYYY-MM-DD: UI components implemented - YYYY-MM-DD: Bug fixes applied -->
 
+- 2026-05-01: Initial Next.js setup with Tailwind CSS
 - Project setup and boilerplate cleanup
