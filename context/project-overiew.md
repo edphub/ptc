@@ -83,6 +83,7 @@ The platform is designed as a multi-tenant SaaS system for schools with future e
    Homework status overview
    Alerts and notifications feed
 4. 💡 UX/UI Design Principles
+
    Mobile-first (React Native / Flutter-ready)
    Minimal bandwidth consumption
    Offline-first architecture with sync support
@@ -98,6 +99,15 @@ The platform is designed as a multi-tenant SaaS system for schools with future e
    Homework status
    Latest announcements
    Academic progress snapshot
+
+### Screenshots
+
+refer to the screenshot below as a base for Dashoard UI.
+it does not to be the exact. use it as reference:
+
+- @context/screenshots/dashboard-ui-main.png
+- @context/screenshots/dashboard-ui-drawer.png
+
 5. ⚙️ Technical Architecture
    Recommended Stack
    Frontend (Mobile)
