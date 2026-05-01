@@ -1,4 +1,4 @@
-interface StudentRow {
+export interface StudentRow {
   id: string;
   name: string;
   className: string;
@@ -9,9 +9,10 @@ interface StudentRow {
 
 interface StudentsTableProps {
   students: StudentRow[];
+  onSelect?: (student: StudentRow) => void;
 }
 
-export function StudentsTable({ students }: StudentsTableProps) {
+export function StudentsTable({ students, onSelect }: StudentsTableProps) {
   return (
     <div className="rounded-3xl border border-slate-800 bg-slate-900 p-6 overflow-x-auto">
       <div className="mb-6 flex items-center justify-between">
@@ -32,7 +33,13 @@ export function StudentsTable({ students }: StudentsTableProps) {
         </thead>
         <tbody>
           {students.map((student) => (
-            <tr key={student.id} className="rounded-3xl border border-slate-800 bg-slate-950">
+            <tr
+              key={student.id}
+              className="cursor-pointer rounded-3xl border border-slate-800 bg-slate-950 transition hover:border-slate-600"
+              onClick={() => onSelect?.(student)}
+              tabIndex={0}
+              role="button"
+            >
               <td className="px-4 py-4 text-sm text-slate-100">{student.name}</td>
               <td className="px-4 py-4 text-sm text-slate-400">{student.className}</td>
               <td className="px-4 py-4 text-sm text-slate-400">{student.attendancePercent}%</td>

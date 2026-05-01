@@ -224,7 +224,16 @@ export const homeworkItems: HomeworkItem[] = [
 ];
 
 // Sample messages
-export const messages = [
+export interface MessageItem {
+  id: string;
+  from: string;
+  class: string;
+  preview: string;
+  timestamp: string;
+  read: boolean;
+}
+
+export const messages: MessageItem[] = [
   {
     id: "msg-001",
     from: "Mr. Ahmed Khan",
@@ -267,8 +276,17 @@ export const messages = [
   },
 ];
 
+export interface StudentRecord {
+  id: string;
+  name: string;
+  classId: string;
+  attendancePercent: number;
+  grade: string;
+  status: string;
+}
+
 // Sample students
-export const students = [
+export const students: StudentRecord[] = [
   {
     id: "student-001",
     name: "Ahmed Hassan",

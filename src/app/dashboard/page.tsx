@@ -3,13 +3,16 @@
 import { useMemo, useState } from 'react';
 import { AppDrawer } from '@/components/drawer/AppDrawer';
 import { AssignmentDrawer } from '@/components/dashboard/AssignmentDrawer';
+import { MessageDrawer } from '@/components/dashboard/MessageDrawer';
+import { EventDrawer } from '@/components/dashboard/EventDrawer';
+import { StudentDrawer } from '@/components/dashboard/StudentDrawer';
 import { StatsCard } from '@/components/dashboard/StatsCard';
 import { AttendanceChart } from '@/components/dashboard/AttendanceChart';
 import { PerformanceChart } from '@/components/dashboard/PerformanceChart';
 import { ClassCard } from '@/components/dashboard/ClassCard';
 import { HomeworkList } from '@/components/dashboard/HomeworkList';
 import { MessagesList } from '@/components/dashboard/MessagesList';
-import { StudentsTable } from '@/components/dashboard/StudentsTable';
+import { StudentsTable, StudentRow } from '@/components/dashboard/StudentsTable';
 import { EventsList } from '@/components/dashboard/EventsList';
 import {
   dashboardStats,
@@ -21,10 +24,19 @@ import {
   students,
   events,
   HomeworkItem,
+  MessageItem,
+  EventItem,
+  StudentRecord,
 } from '@/lib/mock-data';
 
+type SelectedDashboardItem =
+  | { type: 'assignment'; item: HomeworkItem }
+  | { type: 'message'; item: MessageItem }
+  | { type: 'event'; item: EventItem }
+  | { type: 'student'; item: StudentRow };
+
 export default function DashboardPage() {
-  const [selectedAssignment, setSelectedAssignment] = useState<HomeworkItem | null>(null);
+  const [selectedItem, setSelectedItem] = useState<SelectedDashboardItem | null>(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const studentRows = useMemo(
@@ -37,13 +49,28 @@ export default function DashboardPage() {
   );
 
   const openAssignment = (assignment: HomeworkItem) => {
-    setSelectedAssignment(assignment);
+    setSelectedItem({ type: 'assignment', item: assignment });
+    setIsDrawerOpen(true);
+  };
+
+  const openMessage = (message: MessageItem) => {
+    setSelectedItem({ type: 'message', item: message });
+    setIsDrawerOpen(true);
+  };
+
+  const openEvent = (eventItem: EventItem) => {
+    setSelectedItem({ type: 'event', item: eventItem });
+    setIsDrawerOpen(true);
+  };
+
+  const openStudent = (student: StudentRow) => {
+    setSelectedItem({ type: 'student', item: student });
     setIsDrawerOpen(true);
   };
 
   const closeDrawer = () => {
     setIsDrawerOpen(false);
-    setSelectedAssignment(null);
+    setSelectedItem(null);
   };
 
   return (
@@ -106,16 +133,38 @@ export default function DashboardPage() {
 
       <div className="grid gap-4 xl:grid-cols-[2fr_1fr]">
         <HomeworkList items={homeworkItems} onSelect={openAssignment} />
-        <MessagesList messages={messages} />
+        <MessagesList messages={messages} onSelect={openMessage} />
       </div>
 
       <div className="grid gap-4 xl:grid-cols-2">
-        <StudentsTable students={studentRows} />
-        <EventsList events={events} />
+        <StudentsTable students={studentRows} onSelect={openStudent} />
+        <EventsList events={events} onSelect={openEvent} />
       </div>
 
-      <AppDrawer open={isDrawerOpen} onClose={closeDrawer} title={selectedAssignment ? 'Assignment Detail' : 'Details'}>
-        {selectedAssignment ? <AssignmentDrawer assignment={selectedAssignment} /> : null}
+      <AppDrawer
+        open={isDrawerOpen}
+        onClose={closeDrawer}
+        title={
+          selectedItem
+            ? selectedItem.type === 'assignment'
+              ? 'Assignment Detail'
+              : selectedItem.type === 'message'
+              ? 'Message Detail'
+              : selectedItem.type === 'event'
+              ? 'Event Detail'
+              : 'Student Detail'
+            : 'Details'
+        }
+      >
+        {selectedItem?.type === 'assignment' ? (
+          <AssignmentDrawer assignment={selectedItem.item} />
+        ) : selectedItem?.type === 'message' ? (
+          <MessageDrawer message={selectedItem.item} />
+        ) : selectedItem?.type === 'event' ? (
+          <EventDrawer eventItem={selectedItem.item} />
+        ) : selectedItem?.type === 'student' ? (
+          <StudentDrawer student={selectedItem.item} className={selectedItem.item.className} />
+        ) : null}
       </AppDrawer>
     </div>
   );

@@ -2,15 +2,17 @@ interface EventItem {
   id: string;
   title: string;
   date: string;
+  type: "Event" | "Meeting" | "Academic" | "Holiday";
   tag: string;
   description: string;
 }
 
 interface EventsListProps {
   events: EventItem[];
+  onSelect?: (eventItem: EventItem) => void;
 }
 
-export function EventsList({ events }: EventsListProps) {
+export function EventsList({ events, onSelect }: EventsListProps) {
   return (
     <div className="rounded-3xl border border-slate-800 bg-slate-900 p-6">
       <div className="flex items-center justify-between">
@@ -24,7 +26,12 @@ export function EventsList({ events }: EventsListProps) {
       </div>
       <div className="mt-6 space-y-4">
         {events.map((event) => (
-          <div key={event.id} className="rounded-3xl border border-slate-800 bg-slate-950 p-4">
+          <button
+            key={event.id}
+            type="button"
+            onClick={() => onSelect?.(event)}
+            className="w-full rounded-3xl border border-slate-800 bg-slate-950 p-4 text-left transition hover:border-slate-600"
+          >
             <div className="flex items-start justify-between gap-4">
               <div>
                 <p className="font-semibold text-slate-100">{event.title}</p>
@@ -38,7 +45,7 @@ export function EventsList({ events }: EventsListProps) {
               month: 'short',
               day: 'numeric',
             })}</p>
-          </div>
+          </button>
         ))}
       </div>
     </div>
